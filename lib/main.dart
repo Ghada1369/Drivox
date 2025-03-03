@@ -17,11 +17,11 @@ class Drivox extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        Onboarding.routeName : (context)=> Onboarding(),
+        Onboarding.routeName : (context)=> const Onboarding(),
         LoginScreen.routeName : (context)=>  LoginScreen(),
         SignUp.routeName : (context)=>SignUp(),
         HomeScreen.routeName : (context)=> const HomeScreen(),
-        ForgotPassword.routeName : (context)=> const ForgotPassword(),
+        ForgotPassword.routeName : (context)=>  ForgotPassword(),
       },
       initialRoute: Onboarding.routeName,
     );
