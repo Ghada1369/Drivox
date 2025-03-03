@@ -1,0 +1,29 @@
+import 'package:drivox/screens/home/home_screen.dart';
+import 'package:drivox/screens/login/login_screen.dart';
+import 'package:drivox/screens/onboarding/onboarding.dart';
+import 'package:drivox/screens/password_configuration/forgot_password.dart';
+import 'package:drivox/screens/signup/sign_up.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const Drivox());
+}
+
+class Drivox extends StatelessWidget {
+  const Drivox({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      routes: {
+        Onboarding.routeName : (context)=> Onboarding(),
+        LoginScreen.routeName : (context)=>  LoginScreen(),
+        SignUp.routeName : (context)=>SignUp(),
+        HomeScreen.routeName : (context)=> const HomeScreen(),
+        ForgotPassword.routeName : (context)=> const ForgotPassword(),
+      },
+      initialRoute: Onboarding.routeName,
+    );
+  }
+}
