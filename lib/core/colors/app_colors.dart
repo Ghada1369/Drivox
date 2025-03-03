@@ -10,8 +10,10 @@ class AppColors {
   static const Color hintText = Color(0xFFB0B0B0);
   static const Color textFormField = Color(0xFFF6F6F6);
   static const Color error = Color(0xff851010);
+  static const Color button = Color(0xFF455A64);
   static const Color buttonBorder = Color(0xFF3D3D3D);
   static const Color sidedText = Color(0xFFE7E7E7);
+  static const Color indicator = Color(0xFFFFFFFF);
 
 
 
