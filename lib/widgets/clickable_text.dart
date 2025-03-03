@@ -21,7 +21,7 @@ class ClickableText extends StatelessWidget {
       padding: EdgeInsets.all(padding),
       child: InkWell(
         onTap: (){
-          Navigator.pushNamed(context, route);
+          Navigator.pushReplacementNamed(context, route);
         },
         child: Text(
           text,

@@ -1,6 +1,6 @@
 import 'package:drivox/core/colors/app_colors.dart';
-import 'package:drivox/screens/home/home_screen.dart';
 import 'package:drivox/screens/login/login_screen.dart';
+import 'package:drivox/screens/password_configuration/verification.dart';
 import 'package:drivox/widgets/button.dart';
 import 'package:drivox/widgets/clickable_text.dart';
 import 'package:drivox/widgets/custom_scaffold.dart';
@@ -67,7 +67,7 @@ class ForgotPassword extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 40),
-          Button(formKey: _formKey, buttonName: 'Send',route: HomeScreen.routeName,),
+          Button(formKey: _formKey, buttonName: 'Send',route: Verification.routeName,),
         const SizedBox(height: 15),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

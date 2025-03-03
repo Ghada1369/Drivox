@@ -2,6 +2,8 @@ import 'package:drivox/screens/home/home_screen.dart';
 import 'package:drivox/screens/login/login_screen.dart';
 import 'package:drivox/screens/onboarding/onboarding.dart';
 import 'package:drivox/screens/password_configuration/forgot_password.dart';
+import 'package:drivox/screens/password_configuration/reset_password.dart';
+import 'package:drivox/screens/password_configuration/verification.dart';
 import 'package:drivox/screens/signup/sign_up.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +24,8 @@ class Drivox extends StatelessWidget {
         SignUp.routeName : (context)=>SignUp(),
         HomeScreen.routeName : (context)=> const HomeScreen(),
         ForgotPassword.routeName : (context)=>  ForgotPassword(),
+        Verification.routeName : (context)=>  Verification(),
+        ResetPassword.routeName : (context)=>  ResetPassword(),
       },
       initialRoute: Onboarding.routeName,
     );

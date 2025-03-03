@@ -23,7 +23,7 @@ class Button extends StatelessWidget {
           }
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.blueGrey[700],
+          backgroundColor: AppColors.button,
           side: const BorderSide(color: AppColors.buttonBorder,),
           padding: const EdgeInsets.symmetric(vertical: 12),
         ),
