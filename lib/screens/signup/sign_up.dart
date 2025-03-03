@@ -1,4 +1,5 @@
 import 'package:drivox/core/colors/app_colors.dart';
+import 'package:drivox/screens/home/home_screen.dart';
 import 'package:drivox/screens/signup/widgets/signup_form.dart';
 import 'package:drivox/widgets/button.dart';
 import 'package:drivox/widgets/custom_scaffold.dart';
@@ -22,7 +23,7 @@ class SignUp extends StatelessWidget {
             const SizedBox(height: 20),
             SignUpForm(formKey: formKey),
             const SizedBox(height: 40),
-            Button(formKey: formKey,buttonName: 'SIGN UP',),
+            Button(formKey: formKey,buttonName: 'SIGN UP',route: HomeScreen.routeName,),
             const SizedBox(height: 15),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -31,7 +32,6 @@ class SignUp extends StatelessWidget {
                   'Already have an account?',
                   style: TextStyle(color: Colors.white70),
                 ),
-                //SizedBox(height: 5,),
                 TextButton(
                   onPressed: (){
                     Navigator.pop(context);

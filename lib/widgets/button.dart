@@ -1,14 +1,15 @@
 import 'package:drivox/core/colors/app_colors.dart';
-import 'package:drivox/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
   final GlobalKey<FormState> formKey;
+  final String route;
   final String buttonName;
   const Button({
     super.key,
     required this.formKey,
-    required this.buttonName
+    required this.buttonName,
+    required this.route
   });
 
   @override
@@ -18,7 +19,7 @@ class Button extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {
           if (formKey.currentState!.validate()) {
-            Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+            Navigator.pushReplacementNamed(context, route);
           }
         },
         style: ElevatedButton.styleFrom(

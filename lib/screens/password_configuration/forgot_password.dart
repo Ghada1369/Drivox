@@ -1,39 +1,92 @@
 import 'package:drivox/core/colors/app_colors.dart';
+import 'package:drivox/screens/home/home_screen.dart';
+import 'package:drivox/screens/login/login_screen.dart';
+import 'package:drivox/widgets/button.dart';
+import 'package:drivox/widgets/clickable_text.dart';
+import 'package:drivox/widgets/custom_scaffold.dart';
+import 'package:drivox/widgets/drivox_logo.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPassword extends StatelessWidget {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
   static String routeName = '/forgotPassword';
-  const ForgotPassword({super.key});
+  ForgotPassword({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-        gradient: LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors:[AppColors.gradient1,AppColors.gradient2,AppColors.gradient3],
-    ),
-      ),
-    child: const Center(
-      child: Column(
+    return CustomScaffold(
+      enableAnimation: false,
+      widget: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            'Drivox',
-            style: TextStyle(
-              color: AppColors.textFormField,
-              fontSize: 40,
-              fontWeight: FontWeight.bold,
+          const DrivoxLogo(text: 3),
+          const SizedBox(height: 20),
+          Form(
+            key: _formKey,
+            child: TextFormField(
+              controller: emailController,
+              cursorColor: AppColors.textFormField,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please Enter an Email';
+                } else if (!RegExp(r'^[\w.-]+@[\w.-]+\.\w+$').hasMatch(value)) {
+                  return "Please Enter a Valid Email";
+                }
+                return null;
+              },
+              onChanged: (value) {
+                emailController.value = TextEditingValue(
+                  text: value.toLowerCase(),
+                  selection: TextSelection.collapsed(offset: value.length),
+                );
+              },
+              keyboardType: TextInputType.emailAddress,
+              style: const TextStyle(color: AppColors.textFormField),
+              decoration: InputDecoration(
+                errorStyle: const TextStyle(color: AppColors.error),
+                hintText: 'Email',
+                hintStyle: const TextStyle(color: AppColors.hintText),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(color: AppColors.textFormField),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(color: AppColors.textFormField),
+                ),
+                errorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: const BorderSide(color: AppColors.error),
+                ),
+                focusedErrorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: const BorderSide(color: AppColors.error),
+                ),
+              ),
             ),
           ),
-
-
+          const SizedBox(height: 40),
+          Button(formKey: _formKey, buttonName: 'Send',route: HomeScreen.routeName,),
+        const SizedBox(height: 15),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Remember your password?',
+              style: TextStyle(color: AppColors.sidedText),
+            ),
+            ClickableText(
+                padding: 10,
+                route: LoginScreen.routeName,
+                text: 'SIGN IN',
+                color: AppColors.importantText,
+                fontWeight: FontWeight.bold
+            )
+          ]
+        )
         ],
-      ),
-    ),
       )
     );
-}
+  }
 }

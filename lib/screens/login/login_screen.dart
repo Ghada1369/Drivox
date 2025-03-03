@@ -1,4 +1,5 @@
 import 'package:drivox/core/colors/app_colors.dart';
+import 'package:drivox/screens/home/home_screen.dart';
 import 'package:drivox/screens/login/widgets/login_form.dart';
 import 'package:drivox/screens/password_configuration/forgot_password.dart';
 import 'package:drivox/screens/signup/sign_up.dart';
@@ -38,7 +39,7 @@ class LoginScreen extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 40),
-          Button(formKey: formKey,buttonName: 'LOGIN',),
+          Button(formKey: formKey,buttonName: 'LOGIN',route: HomeScreen.routeName,),
           const SizedBox(height: 15),
           Row(
              mainAxisAlignment: MainAxisAlignment.center,
