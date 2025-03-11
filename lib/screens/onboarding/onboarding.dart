@@ -1,8 +1,11 @@
+import 'package:drivox/core/assets/app_assets.dart';
 import 'package:drivox/core/colors/app_colors.dart';
 import 'package:drivox/core/text/app_text.dart';
 import 'package:drivox/screens/login/login_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:lottie/lottie.dart';
+import 'package:flutter/material.dart';
+
 
 class Onboarding extends StatefulWidget {
   static String routeName = '/onboarding.dart';
@@ -44,22 +47,34 @@ class _OnboardingState extends State<Onboarding> {
                     buildPage(
                       title: AppText.title1,
                       description: AppText.description1,
-                      textAlign: TextAlign.center
+                      textAlign: TextAlign.center,
+                      image: AppAssets.pageView1,
+                      width: MediaQuery.of(context).size.width*0.5,
+                      height: MediaQuery.of(context).size.height*0.45,
                     ),
                     buildPage(
                       title: AppText.title2,
                       description: AppText.description2,
-                      textAlign: TextAlign.center
+                      textAlign: TextAlign.center,
+                      image: AppAssets.pageView2,
+                      width: MediaQuery.of(context).size.width*0.4,
+                      height: MediaQuery.of(context).size.height*0.4,
                     ),
                     buildPage(
                       title: AppText.title3,
                       description: AppText.description3,
-                      textAlign: TextAlign.justify
+                      textAlign: TextAlign.justify,
+                      image: AppAssets.pageView3,
+                      width: MediaQuery.of(context).size.width*0.6,
+                      height: MediaQuery.of(context).size.height*0.3,
                     ),
                     buildPage(
                       title: AppText.title4,
                       description: AppText.description4,
-                      textAlign: TextAlign.center
+                      textAlign: TextAlign.center,
+                      image: AppAssets.pageView4,
+                      width: MediaQuery.of(context).size.width*0.8,
+                      height: MediaQuery.of(context).size.height*0.4,
                     ),
                   ],
                 ),
@@ -74,7 +89,7 @@ class _OnboardingState extends State<Onboarding> {
                     );
                   },
                   child: const Text(
-                    'Skip',
+                    AppText.skip,
                     style: TextStyle(color: AppColors.sidedText, fontSize: 15),
                   ),
                 ),
@@ -93,7 +108,7 @@ class _OnboardingState extends State<Onboarding> {
                             curve: Curves.easeIn);
                       },
                       child: const Text(
-                        'Previous',
+                        AppText.previous,
                         style: TextStyle(color: AppColors.sidedText, fontSize: 15),
                       ),
                     ),
@@ -118,7 +133,7 @@ class _OnboardingState extends State<Onboarding> {
                         }
                       },
                       child: const Text(
-                        'Next',
+                        AppText.next,
                         style: TextStyle(color: AppColors.sidedText, fontSize: 15),
                       ),
                     ),
@@ -132,10 +147,20 @@ class _OnboardingState extends State<Onboarding> {
     );
   }
 
-  Widget buildPage({required String title, required String description, required TextAlign textAlign}) {
+  Widget buildPage({required String title, required String description, required TextAlign textAlign, required String image,required double height,required double width,}) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Lottie.asset(
+              image,
+              width: width,
+              height: height,
+            ),
+          ],
+        ),
         Text(
           title,
           style: const TextStyle(

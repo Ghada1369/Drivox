@@ -1,4 +1,5 @@
 import 'package:drivox/core/colors/app_colors.dart';
+import 'package:drivox/core/text/app_text.dart';
 import 'package:drivox/screens/login/login_screen.dart';
 import 'package:drivox/screens/password_configuration/verification.dart';
 import 'package:drivox/widgets/button.dart';
@@ -29,9 +30,9 @@ class ForgotPassword extends StatelessWidget {
               cursorColor: AppColors.textFormField,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please Enter an Email';
+                  return AppText.emailValidator1;
                 } else if (!RegExp(r'^[\w.-]+@[\w.-]+\.\w+$').hasMatch(value)) {
-                  return "Please Enter a Valid Email";
+                  return AppText.emailValidator2;
                 }
                 return null;
               },
@@ -45,7 +46,7 @@ class ForgotPassword extends StatelessWidget {
               style: const TextStyle(color: AppColors.textFormField),
               decoration: InputDecoration(
                 errorStyle: const TextStyle(color: AppColors.error),
-                hintText: 'Email',
+                hintText: AppText.email,
                 hintStyle: const TextStyle(color: AppColors.hintText),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -67,19 +68,19 @@ class ForgotPassword extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 40),
-          Button(formKey: _formKey, buttonName: 'Send',route: Verification.routeName,),
+          Button(formKey: _formKey, buttonName: AppText.send,route: Verification.routeName,),
         const SizedBox(height: 15),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Remember your password?',
+              AppText.rememberYourPassword,
               style: TextStyle(color: AppColors.sidedText),
             ),
             ClickableText(
                 padding: 10,
                 route: LoginScreen.routeName,
-                text: 'SIGN IN',
+                text: AppText.signIn,
                 color: AppColors.importantText,
                 fontWeight: FontWeight.bold
             )

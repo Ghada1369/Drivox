@@ -1,5 +1,6 @@
 import 'package:drivox/core/assets/app_assets.dart';
 import 'package:drivox/core/colors/app_colors.dart';
+import 'package:drivox/core/text/app_text.dart';
 import 'package:flutter/material.dart';
 
 class DrivoxLogo extends StatelessWidget {
@@ -28,7 +29,7 @@ class DrivoxLogo extends StatelessWidget {
             bottom: 13,
             child: text == 1
                 ? const Text(
-              'Drive Safe, Stay Awake',
+              AppText.slogan,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: AppColors.sidedText,
@@ -37,7 +38,7 @@ class DrivoxLogo extends StatelessWidget {
             )
                 : text == 2
                 ? const Text(
-              'Create an Account',
+              AppText.createAnAccount,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: AppColors.sidedText,
@@ -47,7 +48,7 @@ class DrivoxLogo extends StatelessWidget {
             )
                 : text == 3
                 ? const Text(
-              'Forgot Password',
+              AppText.forgotPassword,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: AppColors.sidedText,
@@ -57,7 +58,7 @@ class DrivoxLogo extends StatelessWidget {
             )
                 : text == 4
                 ? const Text(
-              'Reset Password',
+              AppText.resetPassword,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: AppColors.sidedText,

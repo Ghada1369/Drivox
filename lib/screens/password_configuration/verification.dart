@@ -1,4 +1,5 @@
 import 'package:drivox/core/colors/app_colors.dart';
+import 'package:drivox/core/text/app_text.dart';
 import 'package:drivox/screens/password_configuration/forgot_password.dart';
 import 'package:drivox/screens/password_configuration/reset_password.dart';
 import 'package:drivox/widgets/clickable_text.dart';
@@ -32,7 +33,7 @@ class _VerificationState extends State<Verification> {
   void verifyCode() {
     if (enteredCode.isEmpty) {
       setState(() {
-        errorMessage = "Please Enter The Code.";
+        errorMessage = AppText.error1;
       });
       return;
     }
@@ -49,7 +50,7 @@ class _VerificationState extends State<Verification> {
       });
     } else {
       setState(() {
-        errorMessage = "Incorrect code. Please try again.";
+        errorMessage = AppText.error2;
       });
     }
   }
@@ -61,7 +62,7 @@ class _VerificationState extends State<Verification> {
     Future.delayed(const Duration(milliseconds:  400), () {
       setState(() => isResending = false);
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("A new code has been sent to your email.")),
+        const SnackBar(content: Text(AppText.snackBarMessage)),
       );
     });
   }
@@ -130,7 +131,7 @@ class _VerificationState extends State<Verification> {
                 ),
               )
                   : const Text(
-                'Verify',
+                AppText.verify,
                 style: TextStyle(
                   color: AppColors.indicator,
                   fontSize: 18,
@@ -146,20 +147,19 @@ class _VerificationState extends State<Verification> {
               ClickableText(
                   padding: 10,
                   route: ForgotPassword.routeName,
-                  text: 'Edit Email',
+                  text: AppText.editEmail,
                   color: AppColors.importantText,
                   fontWeight: FontWeight.bold),
               const SizedBox(width: 20),
               InkWell(
                 onTap: isResending ? null : resendCode,
                 child: const Text(
-                  'Resend',
+                  AppText.resend,
                   style: TextStyle(
                     color: AppColors.importantText,
                     fontWeight: FontWeight.bold
                   ),
                 ),
-
               )
             ],
           )

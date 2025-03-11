@@ -1,4 +1,5 @@
 import 'package:drivox/core/colors/app_colors.dart';
+import 'package:drivox/core/text/app_text.dart';
 import 'package:flutter/material.dart';
 
 class LoginForm extends StatefulWidget {
@@ -31,9 +32,9 @@ class _LoginFormState extends State<LoginForm> {
             cursorColor: AppColors.textFormField,
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please Enter an Email';
+                return AppText.emailValidator1;
               } else if (!RegExp(r'^[\w.-]+@[\w.-]+\.\w+$').hasMatch(value)) {
-                return "Please Enter a Valid Email";
+                return AppText.emailValidator2;
               }
               return null;
             },
@@ -47,7 +48,7 @@ class _LoginFormState extends State<LoginForm> {
             style: const TextStyle(color: AppColors.textFormField),
             decoration: InputDecoration(
               errorStyle: const TextStyle(color: AppColors.error),
-              hintText: 'Email',
+              hintText: AppText.email,
               hintStyle: const TextStyle(color: AppColors.hintText),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
@@ -72,9 +73,9 @@ class _LoginFormState extends State<LoginForm> {
           TextFormField(
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return "Please Enter a Password";
+                return AppText.passwordValidator1;
               } else if (value.length < 8) {
-                return "Password must be at least 8 characters";
+                return AppText.passwordValidator2;
               }
               return null;
             },
@@ -83,7 +84,7 @@ class _LoginFormState extends State<LoginForm> {
             obscureText: !isVisible,
             style: const TextStyle(color: AppColors.textFormField),
             decoration: InputDecoration(
-              hintText: 'Password',
+              hintText: AppText.password,
               hintStyle: const TextStyle(color: AppColors.hintText),
               errorStyle: const TextStyle(color: AppColors.error),
               suffixIcon: InkWell(
