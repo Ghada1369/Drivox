@@ -1,4 +1,5 @@
 import 'package:drivox/core/colors/app_colors.dart';
+import 'package:drivox/core/text/app_text.dart';
 import 'package:drivox/widgets/custom_scaffold.dart';
 import 'package:drivox/widgets/drivox_logo.dart';
 import 'package:drivox/screens/login/login_screen.dart';
@@ -35,16 +36,16 @@ class _ResetPasswordState extends State<ResetPassword> {
                     cursorColor: AppColors.textFormField,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Enter password';
+                        return AppText.enterPassword;
                       }
                       if (value.length < 8 || value.length > 20) {
-                        return 'Must be between 8 and 20 characters';
+                        return AppText.passwordValidator3;
                       }
                       return null;
                     },
                     style: const TextStyle(color: AppColors.textFormField),
                     decoration: InputDecoration(
-                      hintText: 'Password',
+                      hintText: AppText.password,
                       hintStyle: const TextStyle(color: AppColors.hintText),
                       errorStyle: const TextStyle(color: AppColors.error),
                       suffixIcon: InkWell(
@@ -83,16 +84,16 @@ class _ResetPasswordState extends State<ResetPassword> {
                     cursorColor: AppColors.textFormField,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Enter password';
+                        return AppText.enterPassword;
                       }
                       if (value != _passwordController.text) {
-                        return 'Passwords do not match';
+                        return AppText.passwordsDoNotMatch;
                       }
                       return null;
                     },
                     style: const TextStyle(color: AppColors.textFormField),
                     decoration: InputDecoration(
-                      hintText: 'Confirm Password',
+                      hintText: AppText.confirmPassword,
                       hintStyle: const TextStyle(color: AppColors.hintText),
                       errorStyle: const TextStyle(color: AppColors.error),
                       suffixIcon: InkWell(
@@ -137,7 +138,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                         padding: const EdgeInsets.symmetric(vertical: 12),
                       ),
                       child: const Text(
-                        'Reset',
+                        AppText.reset,
                         style: TextStyle(
                           color: AppColors.textFormField,
                           fontSize: 18,
