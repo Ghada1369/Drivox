@@ -14,8 +14,16 @@ class SignUpForm extends StatefulWidget {
 class _SignUpFormState extends State<SignUpForm> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
   bool isPasswordVisible = false;
   bool isConfirmPasswordVisible = false;
+
+  @override
+  void dispose() {
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -111,15 +119,15 @@ class _SignUpFormState extends State<SignUpForm> {
               cursorColor: AppColors.textFormField,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return AppText.emailValidator1;
-                } else if (!RegExp(r'^[\w.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$').hasMatch(value)) {
-                  return AppText.emailValidator2;
+                  return AppText.emailValidator1; // "Please enter your email"
+                } else if (!RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$').hasMatch(value)) {
+                  return AppText.emailValidator2; // "Invalid email format"
                 }
                 return null;
               },
               onChanged: (value) {
                 _emailController.value = TextEditingValue(
-                  text: value.toLowerCase(),
+                  text: value.toLowerCase().trim(),
                   selection: TextSelection.collapsed(offset: value.length),
                 );
               },
@@ -129,20 +137,20 @@ class _SignUpFormState extends State<SignUpForm> {
                 hintStyle: const TextStyle(color: AppColors.hintText),
                 errorStyle: const TextStyle(color: AppColors.error),
                 enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: AppColors.textFormField),
-                    borderRadius: BorderRadius.circular(12)
+                  borderSide: const BorderSide(color: AppColors.textFormField),
+                  borderRadius: BorderRadius.circular(12),
                 ),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: AppColors.textFormField),
-                    borderRadius: BorderRadius.circular(12)
+                  borderSide: const BorderSide(color: AppColors.textFormField),
+                  borderRadius: BorderRadius.circular(12),
                 ),
                 errorBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Color(0xff6E0A0A)),
-                    borderRadius: BorderRadius.circular(12)
+                  borderSide: const BorderSide(color: Color(0xff6E0A0A)),
+                  borderRadius: BorderRadius.circular(12),
                 ),
                 focusedErrorBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: AppColors.error),
-                    borderRadius: BorderRadius.circular(12)
+                  borderSide: const BorderSide(color: AppColors.error),
+                  borderRadius: BorderRadius.circular(12),
                 ),
               ),
             ),
@@ -154,10 +162,22 @@ class _SignUpFormState extends State<SignUpForm> {
               cursorColor: AppColors.textFormField,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return AppText.passwordValidator1;
+                  return AppText.enterPassword;
                 }
                 if (value.length < 8 || value.length > 20) {
                   return AppText.passwordValidator3;
+                }
+                if (!RegExp(r'[A-Z]').hasMatch(value)) {
+                  return "Password must contain at least one uppercase letter.";
+                }
+                if (!RegExp(r'[a-z]').hasMatch(value)) {
+                  return "Password must contain at least one lowercase letter.";
+                }
+                if (!RegExp(r'[0-9]').hasMatch(value)) {
+                  return "Password must contain at least one digit.";
+                }
+                if (!RegExp(r'[!@#\$%^&*(),.?":{}|<>]').hasMatch(value)) {
+                  return "Password must contain at least one special character (!@#\$%^&*).";
                 }
                 return null;
               },
@@ -196,8 +216,9 @@ class _SignUpFormState extends State<SignUpForm> {
               ),
             ),
             const SizedBox(height: 15),
-            // Confirm Password Field
+            // Confirm Password
             TextFormField(
+              controller: _confirmPasswordController,
               obscureText: !isConfirmPasswordVisible,
               cursorColor: AppColors.textFormField,
               validator: (value) {

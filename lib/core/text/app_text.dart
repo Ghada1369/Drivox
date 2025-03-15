@@ -51,6 +51,7 @@ class AppText {
   static const String verify = 'Verify';
   static const String editEmail = 'Edit Email';
   static const String resend =  'Resend';
+  static const String passwordChangedSuccessfully = 'Password Changed Successfully';
 
   //widgets
   static const String continueWithGoogle = 'Continue With Google';
