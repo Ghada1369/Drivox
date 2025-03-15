@@ -1,8 +1,8 @@
 import 'package:drivox/core/colors/app_colors.dart';
 import 'package:drivox/core/text/app_text.dart';
+import 'package:drivox/screens/password_configuration/successful_verification.dart';
 import 'package:drivox/widgets/custom_scaffold.dart';
 import 'package:drivox/widgets/drivox_logo.dart';
-import 'package:drivox/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class ResetPassword extends StatefulWidget {
@@ -14,9 +14,18 @@ class ResetPassword extends StatefulWidget {
 }
 
 class _ResetPasswordState extends State<ResetPassword> {
+  final _formKey = GlobalKey<FormState>();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
   bool isPasswordVisible = false;
   bool isConfirmPasswordVisible = false;
+
+  @override
+  void dispose() {
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +37,10 @@ class _ResetPasswordState extends State<ResetPassword> {
           const DrivoxLogo(text: 4),
           const SizedBox(height: 20),
           Form(
+              key: _formKey,
               child: Column(
                 children: [
+                  // Password
                   TextFormField(
                     controller: _passwordController,
                     obscureText: !isPasswordVisible,
@@ -40,6 +51,18 @@ class _ResetPasswordState extends State<ResetPassword> {
                       }
                       if (value.length < 8 || value.length > 20) {
                         return AppText.passwordValidator3;
+                      }
+                      if (!RegExp(r'[A-Z]').hasMatch(value)) {
+                        return "Password must contain at least one uppercase letter.";
+                      }
+                      if (!RegExp(r'[a-z]').hasMatch(value)) {
+                        return "Password must contain at least one lowercase letter.";
+                      }
+                      if (!RegExp(r'[0-9]').hasMatch(value)) {
+                        return "Password must contain at least one digit.";
+                      }
+                      if (!RegExp(r'[!@#\$%^&*(),.?":{}|<>]').hasMatch(value)) {
+                        return "Password must contain at least one special character (!@#\$%^&*).";
                       }
                       return null;
                     },
@@ -78,8 +101,9 @@ class _ResetPasswordState extends State<ResetPassword> {
                     ),
                   ),
                   const SizedBox(height: 15),
-                  // Confirm Password Field
+                  // Confirm Password
                   TextFormField(
+                    controller: _confirmPasswordController,
                     obscureText: !isConfirmPasswordVisible,
                     cursorColor: AppColors.textFormField,
                     validator: (value) {
@@ -130,11 +154,13 @@ class _ResetPasswordState extends State<ResetPassword> {
                     width: 200,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushReplacementNamed(context, LoginScreen.routeName);
+                        if (_formKey.currentState!.validate()) {
+                          Navigator.pushReplacementNamed(context, SuccessfulVerification.routeName);
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.button,
-                        side: const BorderSide(color: AppColors.buttonBorder,),
+                        side: const BorderSide(color: AppColors.buttonBorder),
                         padding: const EdgeInsets.symmetric(vertical: 12),
                       ),
                       child: const Text(
