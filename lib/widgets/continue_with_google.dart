@@ -11,7 +11,8 @@ class ContinueWithGoogle extends StatelessWidget {
     return InkWell(
       onTap: (){},
       child: SizedBox(
-        width: double.infinity,
+        width: MediaQuery.of(context).size.width * 0.7,
+        height: MediaQuery.of(context).size.width * 0.14,
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 12),
           decoration: BoxDecoration(

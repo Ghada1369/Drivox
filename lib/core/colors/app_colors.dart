@@ -9,13 +9,15 @@ class AppColors {
   static const Color importantText = Color(0xFF2196F3);
   static const Color hintText = Color(0xFFB0B0B0);
   static const Color textFormField = Color(0xFFF6F6F6);
-  static const Color error = Color(0xff851010);
+  static const Color error = Color(0xff750000);
   static const Color button = Color(0xFF455A64);
   static const Color buttonBorder = Color(0xFF3D3D3D);
   static const Color sidedText = Color(0xFFE7E7E7);
   static const Color white = Color(0xFFFFFFFF);
   static const Color green = Color(0xff4CAF50);
-  static const Color red = Color(0xffF44336);
+  static const Color activeDotColor = Color(0x1FFFFFFF);
+  static const Color dotColor = Color(0x99FFFFFF);
+
 
 
 

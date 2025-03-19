@@ -1,6 +1,6 @@
 import 'package:drivox/core/colors/app_colors.dart';
 import 'package:drivox/core/text/app_text.dart';
-import 'package:drivox/screens/password_configuration/successful_verification.dart';
+import 'package:drivox/screens/password_configuration/successful_password_verification.dart';
 import 'package:drivox/widgets/custom_scaffold.dart';
 import 'package:drivox/widgets/drivox_logo.dart';
 import 'package:flutter/material.dart';
@@ -47,6 +47,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                   widget.needCurrentPassword
                       ? Column(
                     children: [
+                      //current password
                       TextFormField(
                         controller: _currentPasswordController,
                         obscureText: !isCurrentPasswordVisible,
@@ -104,16 +105,16 @@ class _ResetPasswordState extends State<ResetPassword> {
                         return AppText.passwordValidator3;
                       }
                       if (!RegExp(r'[A-Z]').hasMatch(value)) {
-                        return "Password must contain at least one uppercase letter.";
+                        return AppText.passwordValidation1;
                       }
                       if (!RegExp(r'[a-z]').hasMatch(value)) {
-                        return "Password must contain at least one lowercase letter.";
+                        return AppText.passwordValidation2;
                       }
                       if (!RegExp(r'[0-9]').hasMatch(value)) {
-                        return "Password must contain at least one digit.";
+                        return AppText.passwordValidation3;
                       }
                       if (!RegExp(r'[!@#\$%^&*(),.?":{}|<>]').hasMatch(value)) {
-                        return "Password must contain at least one special character (!@#\$%^&*).";
+                        return AppText.passwordValidation4;
                       }
                       return null;
                     },
@@ -121,7 +122,9 @@ class _ResetPasswordState extends State<ResetPassword> {
                     decoration: InputDecoration(
                       hintText: AppText.password,
                       hintStyle: const TextStyle(color: AppColors.hintText),
-                      errorStyle: const TextStyle(color: AppColors.error),
+                      errorStyle: const TextStyle(color: AppColors.error, ),
+                      helperText: AppText.passwordHintText,
+                      helperStyle: const TextStyle(color: AppColors.hintText),
                       suffixIcon: InkWell(
                         onTap: () {
                           setState(() {
@@ -206,7 +209,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          Navigator.pushReplacementNamed(context, SuccessfulVerification.routeName);
+                          Navigator.pushReplacementNamed(context, SuccessfulPasswordVerification.routeName);
                         }
                       },
                       style: ElevatedButton.styleFrom(

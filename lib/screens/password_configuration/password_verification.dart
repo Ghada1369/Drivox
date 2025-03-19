@@ -1,22 +1,21 @@
 import 'package:drivox/core/colors/app_colors.dart';
 import 'package:drivox/core/text/app_text.dart';
-import 'package:drivox/screens/password_configuration/forgot_password.dart';
 import 'package:drivox/screens/password_configuration/reset_password.dart';
 import 'package:drivox/widgets/clickable_text.dart';
 import 'package:drivox/widgets/custom_scaffold.dart';
 import 'package:drivox/widgets/drivox_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-
-class Verification extends StatefulWidget {
-  static String routeName = '/verification';
-  const Verification({super.key});
+// password
+class PasswordVerification extends StatefulWidget {
+  static String routeName = '/passwordVerification';
+  const PasswordVerification({super.key});
 
   @override
-  State<Verification> createState() => _VerificationState();
+  State<PasswordVerification> createState() => _PasswordVerificationState();
 }
 
-class _VerificationState extends State<Verification> {
+class _PasswordVerificationState extends State<PasswordVerification> {
   bool isVerifying = false;
   bool isResending = false;
   String enteredCode = "";
@@ -146,7 +145,7 @@ class _VerificationState extends State<Verification> {
             children: [
               ClickableText(
                   padding: 10,
-                  route: ForgotPassword.routeName,
+                  onTap: (){Navigator.pop(context);},
                   text: AppText.editEmail,
                   color: AppColors.importantText,
                   fontWeight: FontWeight.bold),

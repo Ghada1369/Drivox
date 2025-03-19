@@ -20,10 +20,10 @@ class AppText {
 
   //login form
   static const String email = 'Email';
-  static const String emailValidator1 = 'Please Enter an Email';
+  static const String emailValidator1 = 'Please Enter Your Email';
   static const String emailValidator2 = 'Please Enter a Valid Email';
   static const String password = 'Password';
-  static const String passwordValidator1 = 'Please Enter a Password';
+  static const String passwordValidator1 = 'Please Enter Your Password';
   static const String passwordValidator2 = 'Password must be at least 8 characters';
 
   //sign up
@@ -40,6 +40,10 @@ class AppText {
   static const String enterPassword = 'Enter password';
   static const String passwordsDoNotMatch = 'Passwords do not match';
   static const String confirmPassword = 'Confirm Password';
+  static const String verifyYourEmail = 'Verify Your Email';
+  static const String emailChangedSuccessfully = 'Email Verified Successfully';
+  static const String checkYourEmail = 'Check your mail to get the code';
+  static const String loginToYourAccount = 'Now Login To Your Account';
 
   //password_configuration
   static const String send = 'Send';
@@ -54,6 +58,11 @@ class AppText {
   static const String passwordChangedSuccessfully = 'Password Changed Successfully';
   static const String currentPassword =  'Current Password';
   static const String setCurrentPassword =  'Please enter your current password.';
+  static const String passwordValidation1 =  'Password must contain at least one uppercase letter.';
+  static const String passwordValidation2 =  'Password must contain at least one lowercase letter.';
+  static const String passwordValidation3 =  'Password must contain at least one digit.';
+  static const String passwordValidation4 =  'Must contain at least one special character (!@#\$%^&*).';
+  static const String passwordHintText =  'Use 8-20 characters, including uppercase\nlowercase, number, and special character.';
 
   //home
   static const String dialogHeader = 'Permission Required';

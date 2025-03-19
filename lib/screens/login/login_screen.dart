@@ -1,7 +1,7 @@
 import 'package:drivox/core/colors/app_colors.dart';
 import 'package:drivox/core/text/app_text.dart';
 import 'package:drivox/screens/home/home_screen.dart';
-import 'package:drivox/screens/login/widgets/login_form.dart';
+import 'package:drivox/screens/login/login_form.dart';
 import 'package:drivox/screens/password_configuration/forgot_password.dart';
 import 'package:drivox/screens/signup/sign_up.dart';
 import 'package:drivox/widgets/button.dart';
@@ -34,7 +34,7 @@ class LoginScreen extends StatelessWidget {
               children: [
                 ClickableText(
                     padding: 8,
-                    route: ForgotPassword.routeName,
+                    onTap: (){Navigator.pushNamed(context,ForgotPassword.routeName);},
                     text: AppText.forgotPassword,
                     color: AppColors.sidedText,
                     fontWeight: FontWeight.normal
@@ -42,7 +42,7 @@ class LoginScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 10),
-            Button(formKey: formKey,buttonName: AppText.login,route: HomeScreen.routeName,),
+            Button(formKey: formKey,buttonName: AppText.login,onPressed: () =>Navigator.pushReplacementNamed(context,HomeScreen.routeName),),
             const SizedBox(height: 15),
             const SizedBox(height: 10,),
             const ContinueWithGoogle(),
@@ -56,7 +56,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 ClickableText(
                     padding: 10,
-                    route: SignUp.routeName,
+                    onTap: (){Navigator.pushNamed(context,SignUp.routeName); },
                     text: AppText.registerNow,
                     color: AppColors.importantText,
                     fontWeight: FontWeight.bold

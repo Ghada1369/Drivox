@@ -1,7 +1,6 @@
 import 'package:drivox/core/colors/app_colors.dart';
 import 'package:drivox/core/text/app_text.dart';
-import 'package:drivox/screens/login/login_screen.dart';
-import 'package:drivox/screens/password_configuration/verification.dart';
+import 'package:drivox/screens/password_configuration/password_verification.dart';
 import 'package:drivox/widgets/button.dart';
 import 'package:drivox/widgets/clickable_text.dart';
 import 'package:drivox/widgets/custom_scaffold.dart';
@@ -14,7 +13,9 @@ class ForgotPassword extends StatelessWidget {
   static String routeName = '/forgotPassword';
   ForgotPassword({super.key});
 
+
   @override
+
   Widget build(BuildContext context) {
     return CustomScaffold(
       enableAnimation: false,
@@ -67,7 +68,7 @@ class ForgotPassword extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 40),
-          Button(formKey: _formKey, buttonName: AppText.send,route: Verification.routeName,),
+          Button(formKey: _formKey, buttonName: AppText.send,onPressed: ()=>Navigator.pushNamed(context,PasswordVerification.routeName)),
         const SizedBox(height: 15),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -78,7 +79,7 @@ class ForgotPassword extends StatelessWidget {
             ),
             ClickableText(
                 padding: 10,
-                route: LoginScreen.routeName,
+                onTap: (){Navigator.pop(context);},
                 text: AppText.signIn,
                 color: AppColors.importantText,
                 fontWeight: FontWeight.bold
