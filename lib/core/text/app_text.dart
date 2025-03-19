@@ -52,12 +52,44 @@ class AppText {
   static const String editEmail = 'Edit Email';
   static const String resend =  'Resend';
   static const String passwordChangedSuccessfully = 'Password Changed Successfully';
+  static const String currentPassword =  'Current Password';
+  static const String setCurrentPassword =  'Please enter your current password.';
+
+  //home
+  static const String dialogHeader = 'Permission Required';
+  static const String dialogTitle = 'Contacts permission is required to display your contacts. Please enable it in settings.';
+  static const String dialogButton = 'Open Settings';
+  static const String homeError = 'Contacts permission is required\nto display contacts.';
+  static const String homeErrorButton = 'Grant Permission';
+  static const String noContactsFound = 'No contacts found';
+  static const String selectedContact = 'Selected Contact';
+  static const String yourContacts = 'Your Contacts';
+  static const String noNumber = 'No number';
+  static const String startDriving = 'Start Driving';
+  static const String driveDrivingDialog1 = 'Are you sure you want to start driving with';
+  static const String driveDrivingDialog2 = 'Starting driving with';
+  static const String confirmDialog = 'Yes, Start Driving';
+  static const String cancel = 'Cancel';
+  static const String searchHintText = 'Search in your contacts';
+  static const String appBarText = 'Are You Ready To Start Your Ride?';
+  static const String welcome = 'Welcome';
+  static const String save = 'Save';
+  static const String editName = 'Edit Name';
+  static const String language = 'Language';
+  static const String notification = 'Notification';
+  static const String darkMode = 'Dark Mode';
+  static const String logout = 'Logout';
+  static const String username = 'Username';
+  static const String changePassword = 'Change Password';
+
 
   //widgets
   static const String continueWithGoogle = 'Continue With Google';
   static const String slogan = 'Drive Safe, Stay Awake';
   static const String createAnAccount = 'Create an Account';
   static const String resetPassword = 'Reset Password';
+  static const String settings = 'Settings';
+
 
 
 

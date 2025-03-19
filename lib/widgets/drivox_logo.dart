@@ -66,6 +66,16 @@ class DrivoxLogo extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             )
+                : text == 5
+                ? const Text(
+              AppText.settings,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: AppColors.sidedText,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            )
                 : const SizedBox.shrink(),
           ),
         ],

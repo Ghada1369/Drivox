@@ -126,14 +126,14 @@ class _VerificationState extends State<Verification> {
                 height: 20,
                 width: 20,
                 child: CircularProgressIndicator(
-                  color: AppColors.indicator,
+                  color: AppColors.white,
                   strokeWidth: 2,
                 ),
               )
                   : const Text(
                 AppText.verify,
                 style: TextStyle(
-                  color: AppColors.indicator,
+                  color: AppColors.white,
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
                 ),

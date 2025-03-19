@@ -1,7 +1,10 @@
+import 'package:drivox/core/colors/app_colors.dart';
+import 'package:drivox/core/text/app_text.dart';
+import 'package:drivox/screens/home/settings.dart';
 import 'package:flutter/material.dart';
 
 class HomeAppBar extends StatefulWidget {
-  final Function(String) onSearch; // Accepts a function to handle search in HomeScreen
+  final Function(String) onSearch;
 
   const HomeAppBar({super.key, required this.onSearch});
 
@@ -28,7 +31,7 @@ class _HomeAppBarState extends State<HomeAppBar> {
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [Colors.grey, Colors.blueGrey, Colors.black87],
+              colors: [AppColors.gradient1, AppColors.gradient2, AppColors.gradient3],
             ),
           ),
           child: SafeArea(
@@ -42,8 +45,10 @@ class _HomeAppBarState extends State<HomeAppBar> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         IconButton(
-                          icon: const Icon(Icons.settings, color: Colors.white, size: 30),
-                          onPressed: () {},
+                          icon: const Icon(Icons.settings, color: AppColors.white, size: 30),
+                          onPressed: () {
+                            Navigator.pushNamed(context, Settings.routeName);
+                          },
                         ),
                       ],
                     ),
@@ -53,8 +58,8 @@ class _HomeAppBarState extends State<HomeAppBar> {
                     child: Row(
                       children: [
                         Text(
-                          'Welcome Ghada👋',
-                          style: TextStyle(fontSize: 30, color: Colors.white),
+                          AppText.welcome,
+                          style: TextStyle(fontSize: 30, color: AppColors.white),
                         ),
                       ],
                     ),
@@ -64,8 +69,8 @@ class _HomeAppBarState extends State<HomeAppBar> {
                     child: Row(
                       children: [
                         Text(
-                          'Are You Ready To Start Your Ride?',
-                          style: TextStyle(fontSize: 15, color: Colors.white),
+                          AppText.appBarText,
+                          style: TextStyle(fontSize: 15, color: AppColors.white),
                         ),
                       ],
                     ),
@@ -78,13 +83,23 @@ class _HomeAppBarState extends State<HomeAppBar> {
                         Expanded(
                           child: TextField(
                             controller: searchController,
+                            cursorColor: AppColors.gradient3,
                             decoration: InputDecoration(
-                              hintText: 'Search in your contacts',
+                              hintText: AppText.searchHintText,
                               prefixIcon: const Icon(Icons.search),
                               filled: true,
-                              fillColor: Colors.white,
+                              fillColor: AppColors.white,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
+                                borderSide: const BorderSide(color: AppColors.textFormField),
+                              ),
+                              enabledBorder:  OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide: const BorderSide(color: AppColors.textFormField),
+                              ),
+                              focusedBorder:  OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide: const BorderSide(color: AppColors.textFormField),
                               ),
                             ),
                             onChanged: widget.onSearch, // Calls the search function in HomeScreen
