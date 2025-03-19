@@ -2,6 +2,7 @@ import 'package:drivox/core/colors/app_colors.dart';
 import 'package:drivox/core/text/app_text.dart';
 import 'package:drivox/screens/home/widgets/account_settings.dart';
 import 'package:drivox/screens/home/widgets/settings_options.dart';
+import 'package:drivox/screens/login/login_screen.dart';
 import 'package:drivox/screens/password_configuration/reset_password.dart';
 import 'package:drivox/widgets/custom_scaffold.dart';
 import 'package:drivox/widgets/drivox_logo.dart';
@@ -96,7 +97,7 @@ class _SettingsState extends State<Settings> {
               ),
             ),
             const SizedBox(height: 15),
-            AccountSettings(
+            const AccountSettings(
               title: AppText.email,
               content: 'ghada.af@yahoo.com',
               widget: null,
@@ -141,7 +142,7 @@ class _SettingsState extends State<Settings> {
               children: [
                 const Text(AppText.logout, style: TextStyle(color: AppColors.sidedText, fontSize: 18)),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {Navigator.pushReplacementNamed(context, LoginScreen.routeName);},
                   icon: const Icon(Icons.logout, color: AppColors.sidedText),
                 ),
               ],

@@ -6,9 +6,9 @@ import 'package:drivox/widgets/custom_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class SuccessfulVerification extends StatelessWidget {
-  static String routeName = '/successfulVerification';
-  const SuccessfulVerification({super.key});
+class SuccessfulPasswordVerification extends StatelessWidget {
+  static String routeName = '/successfulPasswordVerification';
+  const SuccessfulPasswordVerification({super.key});
 
   @override
   Widget build(BuildContext context) {

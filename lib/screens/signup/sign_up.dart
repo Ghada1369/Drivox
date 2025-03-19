@@ -1,8 +1,8 @@
 import 'package:drivox/core/colors/app_colors.dart';
 import 'package:drivox/core/text/app_text.dart';
-import 'package:drivox/screens/home/home_screen.dart';
 import 'package:drivox/screens/login/login_screen.dart';
-import 'package:drivox/screens/signup/widgets/signup_form.dart';
+import 'package:drivox/screens/signup/email_verification.dart';
+import 'package:drivox/screens/signup/signup_form.dart';
 import 'package:drivox/widgets/button.dart';
 import 'package:drivox/widgets/continue_with_google.dart';
 import 'package:drivox/widgets/custom_scaffold.dart';
@@ -26,7 +26,7 @@ class SignUp extends StatelessWidget {
             const SizedBox(height: 20),
             SignUpForm(formKey: formKey),
             const SizedBox(height: 30),
-            Button(formKey: formKey,buttonName: AppText.signUp,route: HomeScreen.routeName,),
+            Button(formKey: formKey,buttonName: AppText.signUp,onPressed: ()=>Navigator.pushNamed(context,EmailVerification.routeName),),
             const SizedBox(height: 20),
             const ContinueWithGoogle(),
             const SizedBox(height: 5),
@@ -39,7 +39,7 @@ class SignUp extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: (){
-                    Navigator.pushReplacementNamed(context, LoginScreen.routeName);
+                    Navigator.pushNamed(context, LoginScreen.routeName,);
                     },
                   child: const Text(
                     AppText.signIn,

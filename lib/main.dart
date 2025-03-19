@@ -4,9 +4,11 @@ import 'package:drivox/screens/login/login_screen.dart';
 import 'package:drivox/screens/onboarding/onboarding.dart';
 import 'package:drivox/screens/password_configuration/forgot_password.dart';
 import 'package:drivox/screens/password_configuration/reset_password.dart';
-import 'package:drivox/screens/password_configuration/successful_verification.dart';
-import 'package:drivox/screens/password_configuration/verification.dart';
+import 'package:drivox/screens/password_configuration/successful_password_verification.dart';
+import 'package:drivox/screens/password_configuration/password_verification.dart';
+import 'package:drivox/screens/signup/email_verification.dart';
 import 'package:drivox/screens/signup/sign_up.dart';
+import 'package:drivox/screens/signup/successful_email_verification.dart';
 import 'package:flutter/material.dart';
 
 
@@ -27,13 +29,16 @@ class Drivox extends StatelessWidget {
         SignUp.routeName : (context)=> SignUp(),
         HomeScreen.routeName : (context)=> HomeScreen(),
         ForgotPassword.routeName : (context)=> ForgotPassword(),
-        Verification.routeName : (context)=> const Verification(),
+        PasswordVerification.routeName : (context)=> const PasswordVerification(),
+        EmailVerification.routeName : (context)=> const EmailVerification(),
         ResetPassword.routeName : (context)=> ResetPassword(),
-        SuccessfulVerification.routeName : (context)=> const SuccessfulVerification(),
+        SuccessfulEmailVerification.routeName : (context)=> const SuccessfulEmailVerification(),
+        SuccessfulPasswordVerification.routeName : (context)=> const SuccessfulPasswordVerification(),
+
         Settings.routeName : (context)=> const Settings(),
 
       },
-      initialRoute: Settings.routeName,
+      initialRoute: LoginScreen.routeName,
     );
   }
 }
