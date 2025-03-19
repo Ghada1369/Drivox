@@ -1,4 +1,5 @@
 import 'package:drivox/core/colors/app_colors.dart';
+import 'package:drivox/core/text/app_text.dart';
 import 'package:flutter/material.dart';
 
 class LoginForm extends StatefulWidget {
@@ -10,88 +11,94 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  TextEditingController emailController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   bool isVisible = false;
 
   @override
   void dispose() {
-    emailController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
     super.dispose();
+  }
+
+  String? _validateEmail(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return AppText.emailValidator1; // "Please enter your email"
+    } else if (!RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
+        .hasMatch(value.trim().toLowerCase())) {
+      return AppText.emailValidator2; // "Invalid email format"
+    }
+    return null;
+  }
+
+  String? _validatePassword(String? value) {
+    if (value == null || value.isEmpty) {
+      return AppText.passwordValidator1;
+    } else if (value.length < 8) {
+      return AppText.passwordValidator2;
+    }
+    return null;
   }
 
   @override
   Widget build(BuildContext context) {
     return Form(
       key: widget.formKey,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         children: [
-          //Email Field
+          // Email Field
           TextFormField(
-            controller: emailController,
+            controller: _emailController,
             cursorColor: AppColors.textFormField,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please Enter an Email';
-              } else if (!RegExp(r'^[\w.-]+@[\w.-]+\.\w+$').hasMatch(value)) {
-                return "Please Enter a Valid Email";
-              }
-              return null;
-            },
+            validator: _validateEmail,
             onChanged: (value) {
-              emailController.value = TextEditingValue(
-                text: value.toLowerCase(),
+              _emailController.value = TextEditingValue(
+                text: value.toLowerCase().trim(),
                 selection: TextSelection.collapsed(offset: value.length),
               );
             },
             keyboardType: TextInputType.emailAddress,
             style: const TextStyle(color: AppColors.textFormField),
             decoration: InputDecoration(
-              errorStyle: const TextStyle(color: AppColors.error),
               hintText: 'Email',
               hintStyle: const TextStyle(color: AppColors.hintText),
+              errorStyle: const TextStyle(color: AppColors.error),
               enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
                 borderSide: const BorderSide(color: AppColors.textFormField),
+                borderRadius: BorderRadius.circular(12),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
                 borderSide: const BorderSide(color: AppColors.textFormField),
+                borderRadius: BorderRadius.circular(12),
               ),
               errorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
                 borderSide: const BorderSide(color: AppColors.error),
+                borderRadius: BorderRadius.circular(12),
               ),
               focusedErrorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
                 borderSide: const BorderSide(color: AppColors.error),
+                borderRadius: BorderRadius.circular(12),
               ),
             ),
           ),
           const SizedBox(height: 15),
+
           // Password Field
           TextFormField(
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Please Enter a Password";
-              } else if (value.length < 8) {
-                return "Password must be at least 8 characters";
-              }
-              return null;
-            },
+            controller: _passwordController,
+            validator: _validatePassword,
             cursorColor: AppColors.textFormField,
             keyboardType: TextInputType.text,
             obscureText: !isVisible,
             style: const TextStyle(color: AppColors.textFormField),
             decoration: InputDecoration(
-              hintText: 'Password',
+              hintText: AppText.password,
               hintStyle: const TextStyle(color: AppColors.hintText),
               errorStyle: const TextStyle(color: AppColors.error),
               suffixIcon: InkWell(
-                onTap: () {
-                  setState(() {
-                    isVisible = !isVisible;
-                  });
-                },
+                onTap: () => setState(() => isVisible = !isVisible),
                 child: Icon(
                   isVisible ? Icons.visibility : Icons.visibility_off,
                   color: AppColors.gray200,
@@ -106,11 +113,11 @@ class _LoginFormState extends State<LoginForm> {
                 borderSide: const BorderSide(color: AppColors.textFormField),
               ),
               errorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(12),
                 borderSide: const BorderSide(color: AppColors.error),
               ),
               focusedErrorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(12),
                 borderSide: const BorderSide(color: AppColors.error),
               ),
             ),

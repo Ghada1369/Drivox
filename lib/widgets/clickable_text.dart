@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 
 class ClickableText extends StatelessWidget {
   final double padding;
-  final String route;
+  final VoidCallback onTap;
   final String text;
   final Color color;
   final FontWeight fontWeight;
+
   const ClickableText({
     super.key,
     required this.padding,
-    required this.route,
+    required this.onTap,
     required this.text,
     required this.color,
     required this.fontWeight,
@@ -20,12 +21,10 @@ class ClickableText extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(padding),
       child: InkWell(
-        onTap: (){
-          Navigator.pushNamed(context, route);
-        },
+        onTap: onTap,
         child: Text(
           text,
-          style: TextStyle(color: color,fontWeight: fontWeight),
+          style: TextStyle(color: color, fontWeight: fontWeight),
         ),
       ),
     );

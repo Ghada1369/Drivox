@@ -1,4 +1,5 @@
 import 'package:drivox/core/colors/app_colors.dart';
+import 'package:drivox/core/text/app_text.dart';
 import 'package:flutter/material.dart';
 
 class SignUpForm extends StatefulWidget {
@@ -13,8 +14,17 @@ class SignUpForm extends StatefulWidget {
 class _SignUpFormState extends State<SignUpForm> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
   bool isPasswordVisible = false;
   bool isConfirmPasswordVisible = false;
+
+  @override
+  void dispose() {
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    _emailController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,18 +40,17 @@ class _SignUpFormState extends State<SignUpForm> {
                     child: TextFormField(
                       validator: (value){
                         if (value == null || value.isEmpty) {
-                          return 'Required';
+                          return AppText.required;
                         }
-                        if (!RegExp(r'^[a-zA-Z]+(-[a-zA-Z]+)?$').hasMatch(value)) {
-                          //Name must contain only letters and one hyphen (-) not at the beginning or end
-                          return 'Not Valid';
+                        if (!RegExp(r'^[A-Za-z]+(-[A-Za-z]+)?$').hasMatch(value)) {
+                          return AppText.notValid;
                         }
                         return null;
                       },
                       cursorColor: AppColors.textFormField,
                       style: const TextStyle(color: AppColors.textFormField),
                       decoration: InputDecoration(
-                        hintText: 'First Name',
+                        hintText: AppText.firstName,
                         hintStyle: const TextStyle(color: AppColors.hintText),
                         errorStyle: const TextStyle(color: AppColors.error),
                         enabledBorder: OutlineInputBorder(
@@ -69,17 +78,17 @@ class _SignUpFormState extends State<SignUpForm> {
                     child: TextFormField(
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Required';
+                          return AppText.required;
                         }
-                        if (!RegExp(r'^(?! )[a-zA-Z]+( [a-zA-Z]+)*(?! )$').hasMatch(value)) {
-                          return 'Not Valid';
+                        if (!RegExp(r'^[A-Za-z]+( [A-Za-z]+)*$').hasMatch(value)) {
+                          return AppText.notValid;
                         }
                         return null;
                       },
                       cursorColor: AppColors.textFormField,
                       style: const TextStyle(color: AppColors.textFormField),
                       decoration: InputDecoration(
-                        hintText: 'Last Name',
+                        hintText: AppText.lastName,
                         hintStyle: const TextStyle(color: AppColors.hintText),
                         errorStyle: const TextStyle(color: AppColors.error),
                         enabledBorder: OutlineInputBorder(
@@ -110,88 +119,75 @@ class _SignUpFormState extends State<SignUpForm> {
               cursorColor: AppColors.textFormField,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter an email';
-                } else if (!RegExp(r'^[\w.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$').hasMatch(value)) {
-                  return "Please enter a valid email";
+                  return AppText.emailValidator1;
+                } else if (!RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$').hasMatch(value)) {
+                  return AppText.emailValidator2;
                 }
                 return null;
               },
               onChanged: (value) {
                 _emailController.value = TextEditingValue(
-                  text: value.toLowerCase(),
+                  text: value.toLowerCase().trim(),
                   selection: TextSelection.collapsed(offset: value.length),
                 );
               },
               style: const TextStyle(color: AppColors.textFormField),
               decoration: InputDecoration(
-                hintText: 'Email',
+                hintText: AppText.email,
                 hintStyle: const TextStyle(color: AppColors.hintText),
                 errorStyle: const TextStyle(color: AppColors.error),
                 enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: AppColors.textFormField),
-                    borderRadius: BorderRadius.circular(12)
+                  borderSide: const BorderSide(color: AppColors.textFormField),
+                  borderRadius: BorderRadius.circular(12),
                 ),
                 focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: AppColors.textFormField),
-                    borderRadius: BorderRadius.circular(12)
+                  borderSide: const BorderSide(color: AppColors.textFormField),
+                  borderRadius: BorderRadius.circular(12),
                 ),
                 errorBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Color(0xff6E0A0A)),
-                    borderRadius: BorderRadius.circular(12)
+                  borderSide: const BorderSide(color: Color(0xff6E0A0A)),
+                  borderRadius: BorderRadius.circular(12),
                 ),
                 focusedErrorBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: AppColors.error),
-                    borderRadius: BorderRadius.circular(12)
+                  borderSide: const BorderSide(color: AppColors.error),
+                  borderRadius: BorderRadius.circular(12),
                 ),
               ),
             ),
             const SizedBox(height: 15),
-            //phone number
-            TextFormField(
-              style: const TextStyle(color: AppColors.textFormField),
-              cursorColor: AppColors.textFormField,
-              decoration: InputDecoration(
-                prefix: const Text('+20'),
-                hintText: 'Phone Number (Optional)',
-                hintStyle: const TextStyle(color: AppColors.hintText),
-                enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: AppColors.textFormField),
-                    borderRadius: BorderRadius.circular(12)
-                ),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: AppColors.textFormField),
-                    borderRadius: BorderRadius.circular(12)
-                ),
-                errorBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: AppColors.error),
-                    borderRadius: BorderRadius.circular(12)
-                ),
-                focusedErrorBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: AppColors.error),
-                    borderRadius: BorderRadius.circular(12)
-                ),
-              ),
-            ),
-            const SizedBox(height: 15),
-            //password
+            // Password
             TextFormField(
               controller: _passwordController,
               obscureText: !isPasswordVisible,
               cursorColor: AppColors.textFormField,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Enter password';
+                  return AppText.enterPassword;
                 }
                 if (value.length < 8 || value.length > 20) {
-                  return 'Must be between 8 and 20 characters';
+                  return AppText.passwordValidator3;
+                }
+                if (!RegExp(r'[A-Z]').hasMatch(value)) {
+                  return AppText.passwordValidation1;
+                }
+                if (!RegExp(r'[a-z]').hasMatch(value)) {
+                  return AppText.passwordValidation2;
+                }
+                if (!RegExp(r'[0-9]').hasMatch(value)) {
+                  return AppText.passwordValidation3;
+                }
+                if (!RegExp(r'[!@#\$%^&*(),.?":{}|<>]').hasMatch(value)) {
+                  return AppText.passwordValidation4;
                 }
                 return null;
               },
               style: const TextStyle(color: AppColors.textFormField),
               decoration: InputDecoration(
-                hintText: 'Password',
+                hintText: AppText.password,
                 hintStyle: const TextStyle(color: AppColors.hintText),
-                errorStyle: const TextStyle(color: AppColors.error),
+                errorStyle: const TextStyle(color: AppColors.error, ),
+                helperText: AppText.passwordHintText,
+                helperStyle: const TextStyle(color: AppColors.hintText),
                 suffixIcon: InkWell(
                   onTap: () {
                     setState(() {
@@ -222,22 +218,23 @@ class _SignUpFormState extends State<SignUpForm> {
               ),
             ),
             const SizedBox(height: 15),
-            // Confirm Password Field
+            // Confirm Password
             TextFormField(
+              controller: _confirmPasswordController,
               obscureText: !isConfirmPasswordVisible,
               cursorColor: AppColors.textFormField,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Enter password';
+                  return AppText.enterPassword;
                 }
                 if (value != _passwordController.text) {
-                  return 'Passwords do not match';
+                  return AppText.passwordsDoNotMatch;
                 }
                 return null;
               },
               style: const TextStyle(color: AppColors.textFormField),
               decoration: InputDecoration(
-                hintText: 'Confirm Password',
+                hintText: AppText.confirmPassword,
                 hintStyle: const TextStyle(color: AppColors.hintText),
                 errorStyle: const TextStyle(color: AppColors.error),
                 suffixIcon: InkWell(
