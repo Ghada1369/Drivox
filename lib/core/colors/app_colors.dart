@@ -13,7 +13,9 @@ class AppColors {
   static const Color button = Color(0xFF455A64);
   static const Color buttonBorder = Color(0xFF3D3D3D);
   static const Color sidedText = Color(0xFFE7E7E7);
-  static const Color indicator = Color(0xFFFFFFFF);
+  static const Color white = Color(0xFFFFFFFF);
+  static const Color green = Color(0xff4CAF50);
+  static const Color red = Color(0xffF44336);
 
 
 

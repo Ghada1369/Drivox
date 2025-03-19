@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 
 class ResetPassword extends StatefulWidget {
   static String routeName = '/resetPassword';
-  const ResetPassword({super.key});
+  bool needCurrentPassword ;
+  ResetPassword({super.key,this.needCurrentPassword = false});
 
   @override
   State<ResetPassword> createState() => _ResetPasswordState();
@@ -17,13 +18,16 @@ class _ResetPasswordState extends State<ResetPassword> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _currentPasswordController = TextEditingController();
   bool isPasswordVisible = false;
   bool isConfirmPasswordVisible = false;
+  bool isCurrentPasswordVisible = false;
 
   @override
   void dispose() {
     _passwordController.dispose();
     _confirmPasswordController.dispose();
+    _currentPasswordController.dispose();
     super.dispose();
   }
 
@@ -40,6 +44,53 @@ class _ResetPasswordState extends State<ResetPassword> {
               key: _formKey,
               child: Column(
                 children: [
+                  widget.needCurrentPassword
+                      ? Column(
+                    children: [
+                      TextFormField(
+                        controller: _currentPasswordController,
+                        obscureText: !isCurrentPasswordVisible,
+                        cursorColor: AppColors.textFormField,
+                        validator: (value) {
+                          return (value == null || value.isEmpty) ? AppText.setCurrentPassword: null;
+                        },
+                        style: const TextStyle(color: AppColors.textFormField),
+                        decoration: InputDecoration(
+                          hintText: AppText.currentPassword,
+                          hintStyle: const TextStyle(color: AppColors.hintText),
+                          errorStyle: const TextStyle(color: AppColors.error),
+                          suffixIcon: InkWell(
+                            onTap: () {
+                              setState(() {
+                                isCurrentPasswordVisible = !isCurrentPasswordVisible;
+                              });
+                            },
+                            child: Icon(
+                              isCurrentPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                              color: AppColors.gray200,
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: AppColors.textFormField),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: AppColors.textFormField),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: AppColors.error),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: AppColors.error),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 15),
+                    ],
+                  ) : const SizedBox(),
                   // Password
                   TextFormField(
                     controller: _passwordController,

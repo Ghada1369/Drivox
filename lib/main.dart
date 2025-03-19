@@ -1,4 +1,5 @@
 import 'package:drivox/screens/home/home_screen.dart';
+import 'package:drivox/screens/home/settings.dart';
 import 'package:drivox/screens/login/login_screen.dart';
 import 'package:drivox/screens/onboarding/onboarding.dart';
 import 'package:drivox/screens/password_configuration/forgot_password.dart';
@@ -22,15 +23,17 @@ class Drivox extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         Onboarding.routeName : (context)=> const Onboarding(),
-        LoginScreen.routeName : (context)=>  LoginScreen(),
-        SignUp.routeName : (context)=>SignUp(),
-        HomeScreen.routeName : (context)=>  HomeScreen(),
-        ForgotPassword.routeName : (context)=>  ForgotPassword(),
-        Verification.routeName : (context)=>  const Verification(),
-        ResetPassword.routeName : (context)=>  const ResetPassword(),
-        SuccessfulVerification.routeName : (context)=>  const SuccessfulVerification(),
+        LoginScreen.routeName : (context)=> LoginScreen(),
+        SignUp.routeName : (context)=> SignUp(),
+        HomeScreen.routeName : (context)=> HomeScreen(),
+        ForgotPassword.routeName : (context)=> ForgotPassword(),
+        Verification.routeName : (context)=> const Verification(),
+        ResetPassword.routeName : (context)=> ResetPassword(),
+        SuccessfulVerification.routeName : (context)=> const SuccessfulVerification(),
+        Settings.routeName : (context)=> const Settings(),
+
       },
-      initialRoute: HomeScreen.routeName,
+      initialRoute: Settings.routeName,
     );
   }
 }
