@@ -2,9 +2,9 @@ import 'package:drivox/core/colors/app_colors.dart';
 import 'package:drivox/core/text/app_text.dart';
 import 'package:drivox/screens/home/widgets/home_app_bar.dart';
 import 'package:drivox/screens/home/widgets/start_driving_button.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:flutter/material.dart';
 
 List<Contact> selectedContacts = [];
 List<Contact> allContacts = [];

@@ -1,3 +1,4 @@
+import 'package:drivox/screens/home/driving.dart';
 import 'package:drivox/screens/home/home_screen.dart';
 import 'package:drivox/screens/home/settings.dart';
 import 'package:drivox/screens/login/login_screen.dart';
@@ -36,6 +37,7 @@ class Drivox extends StatelessWidget {
         SuccessfulPasswordVerification.routeName : (context)=> const SuccessfulPasswordVerification(),
 
         Settings.routeName : (context)=> const Settings(),
+        Driving.routeName : (context)=> const Driving(),
 
       },
       initialRoute: LoginScreen.routeName,

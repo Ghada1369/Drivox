@@ -18,6 +18,7 @@ class _HomeAppBarState extends State<HomeAppBar> {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      automaticallyImplyLeading: false,
       floating: true,
       expandedHeight: 230,
       backgroundColor: Colors.transparent,

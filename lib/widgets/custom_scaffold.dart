@@ -2,14 +2,13 @@ import 'package:drivox/core/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomScaffold extends StatefulWidget {
-  static String routeName = '/login';
-  final Widget widget;
-  final bool enableAnimation; // New parameter
 
+  final Widget widget;
+  final bool enableAnimation;
   const CustomScaffold({
     super.key,
     required this.widget,
-    this.enableAnimation = true, // Default to true
+    this.enableAnimation = true,
   });
 
   @override
@@ -30,7 +29,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
         });
       });
     } else {
-      _opacity = 1.0; // Instantly set to fully visible if animation is disabled
+      _opacity = 1.0;
     }
   }
 

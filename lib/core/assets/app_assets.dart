@@ -12,4 +12,6 @@ class AppAssets {
   static const String pageView4 = '${_animationPath}pageView4.json';
 
   static const String right = '${_animationPath}right.json';
+
+  static const String driving = '${_animationPath}driving.json';
 }
