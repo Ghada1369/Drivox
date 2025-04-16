@@ -1,4 +1,5 @@
 class AppText {
+
   //onboarding
   static const String next = 'Next';
   static const String previous = 'Previous';
@@ -90,6 +91,12 @@ class AppText {
   static const String logout = 'Logout';
   static const String username = 'Username';
   static const String changePassword = 'Change Password';
+
+  static const String tripCompleted = 'Trip Completed';
+  static const String finishDriving = 'Did you arrive to your Destination?';
+  static const String yes = 'Yes';
+
+
 
 
   //widgets
