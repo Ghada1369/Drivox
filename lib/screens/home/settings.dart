@@ -17,16 +17,10 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  bool isDarkMode = false;
-  bool isNotificationsEnabled = false;
-  String firstName = "Ghada";
-  String lastName = "Abou-El-Fadl";
 
-  void _toggleDarkMode(bool value) {
-    setState(() {
-      isDarkMode = value;
-    });
-  }
+  bool isNotificationsEnabled = false;
+  String firstName = "Ghada"; //change it according to user name
+  String lastName = "Abou-El-Fadl";
 
   void _toggleNotifications(bool value) {
     setState(() {
@@ -69,7 +63,7 @@ class _SettingsState extends State<Settings> {
                   firstName = firstNameController.text;
                   lastName = lastNameController.text;
                 });
-                Navigator.pop(context);
+                Navigator.pop(context); // just close the dialog
               },
               child: const Text(AppText.save),
             ),
@@ -117,24 +111,10 @@ class _SettingsState extends State<Settings> {
               ),
             ),
             buildPadding(),
-            AccountSettings(
-              title: '',
-              content: AppText.language,
-              widget: InkWell(
-                onTap: () {},
-                child: const Icon(Icons.arrow_forward_ios, color: AppColors.sidedText, size: 13),
-              ),
-            ),
-            const SizedBox(height: 20),
             SettingsOptions(
               title: AppText.notification,
               value: isNotificationsEnabled,
               function: _toggleNotifications,
-            ),
-            SettingsOptions(
-              title: AppText.darkMode,
-              value: isDarkMode,
-              function: _toggleDarkMode,
             ),
             buildPadding(),
             Row(
@@ -142,7 +122,7 @@ class _SettingsState extends State<Settings> {
               children: [
                 const Text(AppText.logout, style: TextStyle(color: AppColors.sidedText, fontSize: 18)),
                 IconButton(
-                  onPressed: () {Navigator.pushReplacementNamed(context, LoginScreen.routeName);},
+                  onPressed: () {Navigator.pushNamedAndRemoveUntil(context, LoginScreen.routeName, (route) => false,);},
                   icon: const Icon(Icons.logout, color: AppColors.sidedText),
                 ),
               ],

@@ -1,15 +1,33 @@
 import 'package:drivox/core/assets/app_assets.dart';
 import 'package:drivox/core/colors/app_colors.dart';
 import 'package:drivox/core/text/app_text.dart';
+import 'package:drivox/screens/home/drivingAlarm.dart';
 import 'package:drivox/screens/home/home_screen.dart';
 import 'package:drivox/widgets/custom_scaffold.dart';
 import 'package:drivox/widgets/drivox_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'dart:async';
 
-class Driving extends StatelessWidget {
+class Driving extends StatefulWidget {
   static String routeName = '/driving';
   const Driving({super.key});
+
+  @override
+  State<Driving> createState() => _DrivingState();
+}
+
+class _DrivingState extends State<Driving> {
+  checkIfDriverSleeping() {}// TODO: فانكشن مؤقته عشان ميبقاش في ايرور.امسحها بعد ما تربط بال api
+  void startSleepMonitor() {
+    Timer.periodic(const Duration(seconds: 5), (timer) async {
+      final sleeping = await checkIfDriverSleeping(); // API call دي الربط
+      if (sleeping) {
+        timer.cancel();
+        Navigator.pushNamedAndRemoveUntil(context, DrivingAlarm.routeName, (route) => false,);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,9 +73,9 @@ class Driving extends StatelessWidget {
 }
 
 void finishDriving(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
+  showDialog(
+    context: context,
+    builder: (context) => AlertDialog(
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -75,7 +93,10 @@ void finishDriving(BuildContext context) {
               ),
               child: TextButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+                  Navigator.of(context, rootNavigator: true).pushNamedAndRemoveUntil(
+                    HomeScreen.routeName,
+                        (route) => false,
+                  );
                 },
                 child: const Padding(
                   padding: EdgeInsets.only(right: 25,left: 25),
@@ -116,6 +137,6 @@ void finishDriving(BuildContext context) {
             ),
           ],
         )
-      ),
-    );
+    ),
+  );
 }

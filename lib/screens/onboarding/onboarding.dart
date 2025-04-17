@@ -132,9 +132,7 @@ class _OnboardingState extends State<Onboarding> {
                             duration: const Duration(milliseconds: 200),
                             curve: Curves.easeIn);
                       } else {
-                        Navigator.of(context, rootNavigator: true).pushReplacement(
-                          MaterialPageRoute(builder: (context) => LoginScreen()),
-                        );
+                        Navigator.pushNamedAndRemoveUntil(context, LoginScreen.routeName, (route) => false,);
                       }
                     },
                     child: const Text(
@@ -153,9 +151,7 @@ class _OnboardingState extends State<Onboarding> {
               top: 20,
               child: TextButton(
                 onPressed: () {
-                  Navigator.of(context, rootNavigator: true).pushReplacement(
-                    MaterialPageRoute(builder: (context) => LoginScreen()),
-                  );
+                  Navigator.pushNamedAndRemoveUntil(context, LoginScreen.routeName, (route) => false,);
                 },
                 child: const Text(
                   AppText.skip,

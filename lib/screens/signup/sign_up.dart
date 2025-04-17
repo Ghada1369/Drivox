@@ -39,7 +39,7 @@ class SignUp extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: (){
-                    Navigator.pushNamed(context, LoginScreen.routeName,);
+                    Navigator.pushReplacementNamed(context, LoginScreen.routeName,);
                     },
                   child: const Text(
                     AppText.signIn,
