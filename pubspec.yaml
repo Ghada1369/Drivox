@@ -38,9 +38,10 @@ dependencies:
   flutter_native_splash: ^2.4.4
   smooth_page_indicator: ^1.2.1
   pin_code_fields: ^8.0.1
-  lottie: ^3.2.0
+  lottie: ^2.6.0
   flutter_contacts: ^1.1.9+2
   permission_handler: ^11.0.1
+  audioplayers: ^6.4.0
 
 dev_dependencies:
   flutter_test:
