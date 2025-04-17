@@ -42,7 +42,11 @@ class LoginScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 10),
-            Button(formKey: formKey,buttonName: AppText.login,onPressed: () =>Navigator.pushReplacementNamed(context,HomeScreen.routeName),),
+            Button(
+              formKey: formKey,
+              buttonName: AppText.login,
+              onPressed: () =>Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false,),
+            ),
             const SizedBox(height: 15),
             const SizedBox(height: 10,),
             const ContinueWithGoogle(),

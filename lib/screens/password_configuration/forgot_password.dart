@@ -8,9 +8,9 @@ import 'package:drivox/widgets/drivox_logo.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPassword extends StatelessWidget {
+  static String routeName = '/forgotPassword';
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
-  static String routeName = '/forgotPassword';
   ForgotPassword({super.key});
 
 

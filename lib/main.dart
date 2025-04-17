@@ -1,4 +1,5 @@
 import 'package:drivox/screens/home/driving.dart';
+import 'package:drivox/screens/home/drivingAlarm.dart';
 import 'package:drivox/screens/home/home_screen.dart';
 import 'package:drivox/screens/home/settings.dart';
 import 'package:drivox/screens/login/login_screen.dart';
@@ -29,17 +30,18 @@ class Drivox extends StatelessWidget {
         Onboarding.routeName : (context)=> const Onboarding(),
         LoginScreen.routeName : (context)=> LoginScreen(),
         SignUp.routeName : (context)=> SignUp(),
-        HomeScreen.routeName : (context)=> HomeScreen(),
+        EmailVerification.routeName : (context)=> const EmailVerification(),
+        SuccessfulEmailVerification.routeName : (context)=> const SuccessfulEmailVerification(),
         ForgotPassword.routeName : (context)=> ForgotPassword(),
         PasswordVerification.routeName : (context)=> const PasswordVerification(),
-        EmailVerification.routeName : (context)=> const EmailVerification(),
         ResetPassword.routeName : (context)=> ResetPassword(),
-        SuccessfulEmailVerification.routeName : (context)=> const SuccessfulEmailVerification(),
         SuccessfulPasswordVerification.routeName : (context)=> const SuccessfulPasswordVerification(),
 
+
+        HomeScreen.routeName : (context)=> HomeScreen(),
         Settings.routeName : (context)=> const Settings(),
         Driving.routeName : (context)=> const Driving(),
-
+        DrivingAlarm.routeName : (context)=> const DrivingAlarm(),
 
       },
       initialRoute: LoginScreen.routeName,

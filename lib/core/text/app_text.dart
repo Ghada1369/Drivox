@@ -59,9 +59,9 @@ class AppText {
   static const String passwordChangedSuccessfully = 'Password Changed Successfully';
   static const String currentPassword =  'Current Password';
   static const String setCurrentPassword =  'Please enter your current password.';
-  static const String passwordValidation1 =  'Password must contain at least one uppercase letter.';
-  static const String passwordValidation2 =  'Password must contain at least one lowercase letter.';
-  static const String passwordValidation3 =  'Password must contain at least one digit.';
+  static const String passwordValidation1 =  'Must contain at least one uppercase letter.';
+  static const String passwordValidation2 =  'Must contain at least one lowercase letter.';
+  static const String passwordValidation3 =  'Must contain at least one digit.';
   static const String passwordValidation4 =  'Must contain at least one special character (!@#\$%^&*).';
   static const String passwordHintText =  'Use 8-20 characters, including uppercase\nlowercase, number, and special character.';
 

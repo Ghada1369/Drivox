@@ -209,7 +209,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          Navigator.pushReplacementNamed(context, SuccessfulPasswordVerification.routeName);
+                          Navigator.pushNamedAndRemoveUntil(context, SuccessfulPasswordVerification.routeName, (route) => false,);
                         }
                       },
                       style: ElevatedButton.styleFrom(

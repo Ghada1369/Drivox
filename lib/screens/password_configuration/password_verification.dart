@@ -6,7 +6,7 @@ import 'package:drivox/widgets/custom_scaffold.dart';
 import 'package:drivox/widgets/drivox_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-// password
+
 class PasswordVerification extends StatefulWidget {
   static String routeName = '/passwordVerification';
   const PasswordVerification({super.key});

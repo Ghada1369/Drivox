@@ -42,7 +42,7 @@ class SuccessfulPasswordVerification extends StatelessWidget {
             children: [
               TextButton(
                 onPressed: (){
-                  Navigator.pushReplacementNamed(context, LoginScreen.routeName);
+                  Navigator.pushNamedAndRemoveUntil(context, LoginScreen.routeName, (route) => false,);
                   },
                 child: const Text(
                   AppText.login,

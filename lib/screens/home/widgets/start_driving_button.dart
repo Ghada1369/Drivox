@@ -33,13 +33,7 @@ class _StartDrivingButtonState extends State<StartDrivingButton> {
                   borderRadius: BorderRadius.circular(30),
                   border: Border.all(color: AppColors.button),),
                 child: TextButton(
-                  onPressed: () {
-                    Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      Driving.routeName,
-                          (route) => false,
-                    );
-                  },
+                  onPressed: () {Navigator.pushNamedAndRemoveUntil(context, Driving.routeName, (route) => false,);},
                   child: const Text(
                     AppText.confirmDialog,
                     style: TextStyle(fontSize: 15 ,color: AppColors.gradient3),

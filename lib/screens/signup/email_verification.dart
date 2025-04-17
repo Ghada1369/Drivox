@@ -45,7 +45,11 @@ class _VerificationState extends State<EmailVerification> {
 
       Future.delayed(const Duration(seconds: 2), () {
         setState(() => isVerifying = false);
-        Navigator.pushReplacementNamed(context, SuccessfulEmailVerification.routeName);
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          SuccessfulEmailVerification.routeName,
+              (route) => false,
+        );
       });
     } else {
       setState(() {
@@ -151,7 +155,7 @@ class _VerificationState extends State<EmailVerification> {
                   color: AppColors.importantText,
                   fontWeight: FontWeight.bold),
               const SizedBox(width: 20),
-              InkWell(
+              InkWell( //firebase
                 onTap: isResending ? null : resendCode,
                 child: const Text(
                   AppText.resend,
