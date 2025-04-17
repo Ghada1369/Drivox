@@ -14,4 +14,5 @@ class AppAssets {
   static const String right = '${_animationPath}right.json';
 
   static const String driving = '${_animationPath}driving.json';
+  static const String drivingAlarm = '${_animationPath}drivingAlarm.json';
 }

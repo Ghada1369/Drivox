@@ -1,4 +1,5 @@
 import 'package:drivox/screens/home/driving.dart';
+import 'package:drivox/screens/home/driving_alarm.dart';
 import 'package:drivox/screens/home/home_screen.dart';
 import 'package:drivox/screens/home/settings.dart';
 import 'package:drivox/screens/login/login_screen.dart';
@@ -39,9 +40,9 @@ class Drivox extends StatelessWidget {
 
         Settings.routeName : (context)=> const Settings(),
         Driving.routeName : (context)=> const Driving(),
-
+        DrivingAlarm.routeName : (context)=> DrivingAlarm(),
       },
-      initialRoute: LoginScreen.routeName,
+      initialRoute: DrivingAlarm.routeName,
     );
   }
 }

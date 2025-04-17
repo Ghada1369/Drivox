@@ -38,9 +38,13 @@ dependencies:
   flutter_native_splash: ^2.4.4
   smooth_page_indicator: ^1.2.1
   pin_code_fields: ^8.0.1
-  lottie: ^3.2.0
+  lottie: ^2.6.0
   flutter_contacts: ^1.1.9+2
   permission_handler: ^11.0.1
+  audioplayers: ^5.2.1
+
+
+
 
 dev_dependencies:
   flutter_test:
@@ -64,16 +68,17 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
+  # To add images to your application, add an images section, like this:
   assets:
      - assets/
      - assets/animation/
      - assets/icons/
+     - assets/audios/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
-  # For details regarding adding assets from package dependencies, see
+  # For details regarding adding images from package dependencies, see
   # https://flutter.dev/to/asset-from-package
 
   # To add custom fonts to your application, add a fonts section here,

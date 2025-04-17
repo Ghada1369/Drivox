@@ -1,15 +1,33 @@
-import 'package:drivox/core/assets/app_assets.dart';
+import 'package:drivox/core/images/app_images.dart';
 import 'package:drivox/core/colors/app_colors.dart';
 import 'package:drivox/core/text/app_text.dart';
+import 'package:drivox/screens/home/driving_alarm.dart';
 import 'package:drivox/screens/home/home_screen.dart';
 import 'package:drivox/widgets/custom_scaffold.dart';
 import 'package:drivox/widgets/drivox_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'dart:async';
 
-class Driving extends StatelessWidget {
+class Driving extends StatefulWidget {
   static String routeName = '/driving';
   const Driving({super.key});
+
+  @override
+  State<Driving> createState() => _DrivingState();
+}
+
+class _DrivingState extends State<Driving> {
+  checkIfDriverSleeping() {}// TODO: فانكشن مؤقته عشان ميبقاش في ايرور.امسحها بعد ما تربط بال api
+  void startSleepMonitor() {
+    Timer.periodic(const Duration(seconds: 5), (timer) async {
+      final sleeping = await checkIfDriverSleeping(); // API call دي الربط
+      if (sleeping) {
+        timer.cancel();
+        Navigator.pushReplacementNamed(context, DrivingAlarm.routeName);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

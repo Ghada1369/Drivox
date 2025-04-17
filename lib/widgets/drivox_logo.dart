@@ -1,4 +1,4 @@
-import 'package:drivox/core/assets/app_assets.dart';
+import 'package:drivox/core/images/app_images.dart';
 import 'package:drivox/core/colors/app_colors.dart';
 import 'package:drivox/core/text/app_text.dart';
 import 'package:flutter/material.dart';
