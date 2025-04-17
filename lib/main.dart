@@ -40,6 +40,7 @@ class Drivox extends StatelessWidget {
         Settings.routeName : (context)=> const Settings(),
         Driving.routeName : (context)=> const Driving(),
 
+
       },
       initialRoute: LoginScreen.routeName,
     );
